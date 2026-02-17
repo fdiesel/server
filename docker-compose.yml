@@ -1,0 +1,40 @@
+services:
+  proxy:
+    image: "jc21/nginx-proxy-manager:latest"
+    container_name: proxy
+    restart: always
+    environment:
+      TZ: "Europe/Berlin"
+    volumes:
+      - proxy_data:/data
+      - proxy_letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy
+    ports:
+      - "80:80"
+      # - '81:81' # Open for setup only!
+      - "443:443"
+
+  portainer:
+    image: portainer/portainer-ce:lts
+    container_name: portainer
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - proxy
+
+volumes:
+  proxy_data:
+    name: nginx-proxy-manager-data
+    external: true
+  proxy_letsencrypt:
+    name: nginx-proxy-manager-letsencrypt
+    external: true
+  portainer_data:
+    external: true
+
+networks:
+  proxy:
+    external: true
