@@ -42,15 +42,17 @@ This is a way to setup [Portainer](https://hub.docker.com/r/portainer/portainer-
    docker compose up -d
    ```
 
-7. Setup your portainer domain.
+7. **Continue using `npm.your-domain.tld` with ssl for accessing npm.**
 
-8. Setup the proxy host for portainer.
+8. Setup your portainer domain.
+
+9. Setup the proxy host for portainer.
 
    `portainer.your-domain.tld` -> `https://portainer:9443`
 
    Request a Let's Encrypt certificate and force ssl.
 
-9. Verify force ssl is enabled for both domains, since it sometimes switches of when requesting a certificate.
+10. Verify force ssl is enabled for both domains, since it sometimes switches of when requesting a certificate.
 
 ## Issues
 
