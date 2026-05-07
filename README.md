@@ -18,7 +18,7 @@ This is a way to setup [Portainer](https://hub.docker.com/r/portainer/portainer-
 
    _Reuse this in portainer later if you need to expose containers._
 
-3. Deploy the compose file & open port 81 for npm.
+3. Deploy the compose file & open port 81 for Nginx Proxy Manager.
 
    ```bash
    # Adjust the time zone in the compose file.
@@ -28,13 +28,13 @@ This is a way to setup [Portainer](https://hub.docker.com/r/portainer/portainer-
 
 4. Point your domain for the proxy to the server.
 
-5. Setup a proxy host npm for npm to proxy it's own admin interface.
+5. Setup a proxy host for Nginx Proxy Manager to proxy it's own admin interface.
 
-   `npm.your-domain.tld` -> `http://localhost:81`
+   `proxy.your-domain.tld` -> `http://localhost:81`
 
    Request a Let's Encrypt certificate and force ssl.
 
-6. **Close the port 81 and change your npm password.**
+6. **Close the port 81 and change your Nginx Proxy Manager password.**
 
    ```bash
    docker compose down
@@ -42,7 +42,7 @@ This is a way to setup [Portainer](https://hub.docker.com/r/portainer/portainer-
    docker compose up -d
    ```
 
-7. **Continue using `npm.your-domain.tld` with ssl for accessing npm.**
+7. **Continue using `proxy.your-domain.tld` with ssl for accessing Nginx Proxy Manager.**
 
 8. Setup your portainer domain.
 
@@ -56,4 +56,4 @@ This is a way to setup [Portainer](https://hub.docker.com/r/portainer/portainer-
 
 ## Issues
 
-_Make sure your using IPv4 so that npm can verify domain ownership for Let's Encrypt going through the docker network._
+_Make sure your using IPv4 so that Nginx Proxy Manager can verify domain ownership for Let's Encrypt going through the docker network._
